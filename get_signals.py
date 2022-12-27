@@ -46,6 +46,7 @@ def get_multiple_signals(mdf_data: asammdf.MDF, channel_names: list, filter_path
 
 if __name__ == '__main__':
     import numpy as np
+    import display_signal_info
 
     # create asammdf.Signal
     cycles = 100
@@ -65,9 +66,10 @@ if __name__ == '__main__':
     mdf = asammdf.MDF(version='4.10')
     mdf.append(signal)
 
-    signals = get_multiple_signals(mdf, ['Cos'])
-    
-    from matplotlib import pyplot as plt
-    print(signals[0].source.path)
-    plt.plot(signals[0].timestamps, signals[0].samples)
-    plt.show()
+    display_signal_info.display_signal_info(mdf, None)
+    # signals = get_multiple_signals(mdf, ['Cos'])
+    # 
+    # from matplotlib import pyplot as plt
+    # print(signals[0].source.path)
+    # plt.plot(signals[0].timestamps, signals[0].samples)
+    # plt.show()
